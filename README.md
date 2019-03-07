@@ -8,7 +8,29 @@ The very basics of building an Android client for the GraphQL API with Apollo.
 * Gradle wrapper 5.2.1
 * AAPT 2
 
+## Notes
+
+In this sample we send GraphQL queries to a public demo Pokemon API:
+
+https://graphql-pokemon.now.sh/
+
+https://github.com/lucasbento/graphql-pokemon
+
+First of all get schema.json file from the server and include it in the project. To do it install Apollo command-line tools by executing command: 
+
+npm install -g apollo
+
+(as described here: https://github.com/apollographql/apollo-tooling )
+
+Then use apollo from the apollo-cli package to download a GraphQL schema by sending an introspection query to the server:
+
+apollo schema:download --endpoint=https://graphql-pokemon.now.sh/ schema.json
+
+The downloaded schema.json file should be placed inside /src/main/graphql directory.  
+
 ## References
+https://www.apollographql.com/docs/android/essentials/get-started.html
+
 https://android.jlelse.eu/hello-apollo-writing-your-first-android-app-with-graphql-d8edabb35a2
 
-https://www.apollographql.com/docs/android/essentials/get-started.html
+https://medium.com/mindorks/what-is-graphql-and-using-it-on-android-ab8e493abdd7
