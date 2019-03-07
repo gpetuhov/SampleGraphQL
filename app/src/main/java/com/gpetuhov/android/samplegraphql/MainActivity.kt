@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initApolloClient() {
+        // Apollo needs OkHttp client
         val okHttpClient = OkHttpClient.Builder().build()
 
         apolloClient = ApolloClient.builder()
@@ -41,12 +42,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initQuery() {
+        // Here we use classes generated from .graphql files
         pokemonNumberQuery = PokemonNumberQuery.builder()
             .name(POKEMON)
             .build()
     }
 
     private fun queryPokemonNumber() {
+        // Apollo runs query on background thread
         apolloClient.query(pokemonNumberQuery).enqueue(object : ApolloCall.Callback<PokemonNumberQuery.Data>() {
             override fun onFailure(e: ApolloException) {
                 // Changing UI must be on UI thread
@@ -56,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(response: Response<PokemonNumberQuery.Data>) {
                 // Changing UI must be on UI thread
                 runOnUiThread {
+                    // Get pokemon number from response and update UI
                     val text = "Pikachu number is: ${response.data()?.pokemon()?.number()}"
                     textView.text = text
                 }

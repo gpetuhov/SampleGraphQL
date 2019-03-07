@@ -1,5 +1,5 @@
 # SampleGraphQL
-The very basics of building an Android client for the GraphQL API with Apollo.
+The very basics of building an Android client for the GraphQL API with Apollo. Query Pikachu Number from the public Pokemon GraphQL API and display it in the UI.
 
 ## Requirements
 * Android Studio 3.5 Canary 6
