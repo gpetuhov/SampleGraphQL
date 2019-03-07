@@ -26,7 +26,11 @@ Then use apollo from the apollo-cli package to download a GraphQL schema by send
 
 apollo schema:download --endpoint=https://graphql-pokemon.now.sh/ schema.json
 
-The downloaded schema.json file should be placed inside /src/main/graphql directory.  
+The downloaded schema.json file should be placed inside /src/main/graphql directory.
+
+Note that graphql folder should include BOTH schema and queries or the project will not build.
+
+Note that qraphql folder MUST have subdirectories according to your package hierarchy. Schema and queries must be inside the inner subdirectory, so that the generated classes could be imported into the project.  
 
 ## References
 https://www.apollographql.com/docs/android/essentials/get-started.html

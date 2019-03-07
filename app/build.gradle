@@ -23,6 +23,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // This is required by OkHttp
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -44,4 +50,7 @@ dependencies {
     // IMPORTANT: Without this project will not build
     // (because @Generated annotation in generated classes is unknown)
     implementation 'javax.annotation:jsr250-api:1.0'
+
+    // OkHttp (Apollo uses OkHttp under the hood)
+    implementation 'com.squareup.okhttp3:okhttp:3.13.1'
 }
